@@ -7,6 +7,8 @@ import { join } from "node:path";
 export interface LoggerOptions {
   debug: boolean;
   logDir?: string;
+  /** ponytail: use plain File transport for tests (DailyRotateFile.end hangs) */
+  testMode?: boolean;
 }
 
 export function createLogger(opts: LoggerOptions): winston.Logger {
@@ -15,15 +17,22 @@ export function createLogger(opts: LoggerOptions): winston.Logger {
   // ponytail: sync mkdir is fine here — called once at plugin init
   mkdirSync(logDir, { recursive: true });
 
-  const transport = new DailyRotateFile({
-    filename: join(logDir, "opencode-session-title-%DATE%.log"),
-    datePattern: "YYYY-MM-DD",
-    maxFiles: "7d",
-    format: winston.format.combine(
-      winston.format.timestamp({ format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }),
-      winston.format.json(),
-    ),
-  });
+  const jsonFormat = winston.format.combine(
+    winston.format.timestamp({ format: "YYYY-MM-DDTHH:mm:ss.SSSZ" }),
+    winston.format.json(),
+  );
+
+  const transport = opts.testMode
+    ? new winston.transports.File({
+        filename: join(logDir, "opencode-session-title-test.log"),
+        format: jsonFormat,
+      })
+    : new DailyRotateFile({
+        filename: join(logDir, "opencode-session-title-%DATE%.log"),
+        datePattern: "YYYY-MM-DD",
+        maxFiles: "7d",
+        format: jsonFormat,
+      });
 
   return winston.createLogger({
     level: opts.debug ? "debug" : "info",
