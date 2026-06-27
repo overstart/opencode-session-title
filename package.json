@@ -4,13 +4,21 @@
   "description": "OpenCode plugin: auto-update Tmux window title based on session state",
   "type": "module",
   "main": "index.js",
-  "files": ["index.js"],
+  "files": ["index.js", "src/"],
   "keywords": ["opencode", "opencode-plugin", "tmux"],
   "license": "MIT",
   "scripts": {
-    "test": "node --test"
+    "build": "bun build src/index.ts --outfile=index.js --format=esm --target=node",
+    "test": "bun test",
+    "prepublishOnly": "bun run build"
   },
   "dependencies": {
-    "@opencode-ai/plugin": "^1.17.11"
+    "@opencode-ai/plugin": "^1.17.11",
+    "winston": "^3.17.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7.0"
   }
 }

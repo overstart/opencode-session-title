@@ -5,3 +5,4 @@ package-lock.json
 .opencode/
 openspec/
 spec-auto-full.sh
+index.js
