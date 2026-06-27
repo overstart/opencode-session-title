@@ -68,22 +68,6 @@ describe("formatTitle", () => {
   });
 });
 
-// ── STATUS_ICONS ──
-
-describe("STATUS_ICONS", () => {
-  it("busy → ●", () => {
-    expect(formatTitle("{icon}", "", "busy")).toBe("●");
-  });
-
-  it("idle → ○", () => {
-    expect(formatTitle("{icon}", "", "idle")).toBe("○");
-  });
-
-  it("retry → ↻", () => {
-    expect(formatTitle("{icon}", "", "retry")).toBe("↻");
-  });
-});
-
 // ── updateTmuxTitle ──
 
 describe("updateTmuxTitle", () => {

@@ -45,7 +45,6 @@ export async function updateTmuxTitle(opts: {
   }
 }
 
-/** @type {import("@opencode-ai/plugin").default} */
 export default async function plugin(input: any, options: PluginOptions = {}) {
   const template = options.template || DEFAULT_TEMPLATE;
   const debug = !!options.debug;

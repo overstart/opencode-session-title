@@ -18,9 +18,4 @@ export interface CurrentState {
   status: SessionStatus;
 }
 
-export interface TmuxContext {
-  $: any; // Bun Shell
-  title: string;
-  dryRun: boolean;
-  log: (entry: Record<string, unknown>) => void;
-}
+
