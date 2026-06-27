@@ -7,6 +7,9 @@
   "files": ["index.js"],
   "keywords": ["opencode", "opencode-plugin", "tmux"],
   "license": "MIT",
+  "scripts": {
+    "test": "node --test"
+  },
   "dependencies": {
     "@opencode-ai/plugin": "^1.17.11"
   }

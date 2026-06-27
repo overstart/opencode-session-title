@@ -4,3 +4,4 @@ package-lock.json
 .idea/
 .opencode/
 openspec/
+spec-auto-full.sh
