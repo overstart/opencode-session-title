@@ -7,6 +7,9 @@
   "files": ["index.js", "src/"],
   "keywords": ["opencode", "opencode-plugin", "tmux"],
   "license": "MIT",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
   "scripts": {
     "build": "bun build src/index.ts --outfile=index.js --format=esm --target=node",
     "test": "bun test",
