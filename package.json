@@ -1,0 +1,13 @@
+{
+  "name": "opencode-session-title",
+  "version": "1.0.0",
+  "description": "OpenCode plugin: auto-update Tmux window title based on session state",
+  "type": "module",
+  "main": "index.js",
+  "files": ["index.js"],
+  "keywords": ["opencode", "opencode-plugin", "tmux"],
+  "license": "MIT",
+  "dependencies": {
+    "@opencode-ai/plugin": "^1.17.11"
+  }
+}

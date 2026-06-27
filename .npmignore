@@ -1,0 +1,6 @@
+node_modules/
+openspec/
+.opencode/
+.idea/
+*.md
+!README.md
